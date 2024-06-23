@@ -1,10 +1,17 @@
-export const Card = () => {
+export const Card = ({
+  type,
+  title = "Название задачи",
+  date = "30.10.23",
+}) => {
+  const badgeTitle = badgeTitleByType[type];
+  const badgeColorClassName = badgeColorClassNameByType[type];
+
   return (
     <div className="cards__item">
       <div className="cards__card card">
         <div className="card__group">
-          <div className="card__theme _orange">
-            <p className="_orange">Web Design</p>
+          <div className={`card__theme ${badgeColorClassName}`}>
+            <p>{badgeTitle}</p>
           </div>
           <a href="#popBrowse" target="_self">
             <div className="card__btn">
@@ -16,7 +23,7 @@ export const Card = () => {
         </div>
         <div className="card__content">
           <a href="" target="_blank">
-            <h3 className="card__title">Название задачи</h3>
+            <h3 className="card__title">{title}</h3>
           </a>
           <div className="card__date">
             <svg
@@ -47,10 +54,22 @@ export const Card = () => {
                 </clipPath>
               </defs>
             </svg>
-            <p>30.10.23</p>
+            <p>{date}</p>
           </div>
         </div>
       </div>
     </div>
   );
+};
+
+const badgeTitleByType = {
+  webDesign: "Web Design",
+  copywriting: "Copywriting",
+  research: "Research",
+};
+
+const badgeColorClassNameByType = {
+  webDesign: "_orange",
+  copywriting: "_purple",
+  research: "_green",
 };
