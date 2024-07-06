@@ -2,10 +2,10 @@ import { Header } from "./components/Header";
 import { Main } from "./components/Main";
 import "./App.css";
 import { useEffect, useState } from "react";
-import { tasks } from "./data";
 import { PopNewCard } from "./components/PopNewCard";
 import { PopBrowse } from "./components/PopBrowse";
 import { PopUser } from "./components/PopUser";
+import { tasks } from "./data";
 
 function App() {
   const [cards, setCards] = useState(tasks);
@@ -19,7 +19,7 @@ function App() {
       status: "Без статуса",
     };
     // eslint-disable-next-line no-undef
-    setCards(value, [...cards, newCard]);
+    setCards([...cards, newCard]);
   };
 
   useEffect(() => {
