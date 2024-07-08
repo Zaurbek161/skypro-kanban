@@ -74,8 +74,8 @@ export const Gray = css`
   color: #FFFFFF;
 `
 export const themeColor = ($color) => css`
-  ${$color === "Web Design" && Orange}
-  ${$color === "Copywritin" && Purple}
+  ${$color === "Web Designe" && Orange}
+  ${$color === "Copywriting" && Purple}
   ${$color === "Research" && Green}
   ${!$color === "" && Gray}
 `

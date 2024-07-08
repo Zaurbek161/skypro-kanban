@@ -800,7 +800,7 @@ body {
 } */
 .main__block {
   width: 100%;
-  margin: 0 auto;
+  margin: 45px;
   padding: 25px 0 49px;
 }
 .main__content {
