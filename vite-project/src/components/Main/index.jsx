@@ -1,6 +1,6 @@
 import { Column } from "../Column/index.jsx";
 import { statusList } from "../../data.js";
-// eslint-disable-next-line react/prop-types
+
 export const Main = ({ cards }) => {
   return (
     <main className="main">
@@ -11,7 +11,6 @@ export const Main = ({ cards }) => {
               <Column
                 key={i}
                 title={status}
-                // eslint-disable-next-line react/prop-types
                 cards={cards.filter((card) => card.status === status)}
               />
             ))}

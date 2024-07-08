@@ -18,7 +18,6 @@ function App() {
       title: "Новая задача",
       status: "Без статуса",
     };
-    // eslint-disable-next-line no-undef
     setCards([...cards, newCard]);
   };
 
