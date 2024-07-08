@@ -1,9 +1,10 @@
 import { Column } from "../Column/index.jsx";
 import { statusList } from "../../data.js";
-// eslint-disable-next-line react/prop-types
+import * as S from "./main.styled.js";
+
 export const Main = ({ cards }) => {
   return (
-    <main className="main">
+    <S.Main>
       <div className="container">
         <div className="main__block">
           <div className="main__content">
@@ -11,13 +12,12 @@ export const Main = ({ cards }) => {
               <Column
                 key={i}
                 title={status}
-                // eslint-disable-next-line react/prop-types
                 cards={cards.filter((card) => card.status === status)}
               />
             ))}
           </div>
         </div>
       </div>
-    </main>
+    </S.Main>
   );
 };

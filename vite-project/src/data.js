@@ -3,7 +3,7 @@ export const tasks = [
 {
     id:1,
     date: '30.10.2023',
-    topic: "Web designe",
+    topic: "Web Designe",
     title: "Название задачи",
     status: "Без статуса",
 },
@@ -17,7 +17,7 @@ export const tasks = [
 {
     id:3,
     date: '30.10.2023',
-    topic: "Web designe",
+    topic: "Web Designe",
     title: "Название задачи",
     status: "Без статуса",
 },
@@ -61,7 +61,7 @@ export const tasks = [
 {
     id:9,
     date: '30.10.2023',
-    topic: "Web designe",
+    topic: "Web Designe",
     title: "Название задачи",
     status: "В работе",
 },

@@ -1,14 +1,21 @@
 import { useState } from "react";
-// eslint-disable-next-line react/prop-types
-export const Header = ({ addCard }) => {
+import * as S from "./header.styled";
+import { Container } from "../../globalStyle.styled";
+
+export const Header = ({ addCard, changeTheme, setChangeTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpenUser = () => {
     setIsOpen(!isOpen);
   };
+
+  const onChangeTheme = () => {
+    setChangeTheme(changeTheme === "light" ? "dark" : "light");
+  };
+
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header__block">
+    <S.Header>
+      <Container>
+        <S.HeaderBlock>
           <div className="header__logo _show _light">
             <a href="" target="_self">
               <img src="images/logo.png" alt="logo" />
@@ -20,16 +27,10 @@ export const Header = ({ addCard }) => {
             </a>
           </div>
           <nav className="header__nav">
-            <button
-              onClick={addCard}
-              className="header__btn-main-new _hover01"
-              id="btnMainNew"
-            >
+            <S.HeaderBtnNew onClick={addCard}>
               <a>Создать новую задачу</a>
-            </button>
-            <a className="header__user _hover02" onClick={toggleOpenUser}>
-              Ivan Ivanov
-            </a>
+            </S.HeaderBtnNew>
+            <S.HeaderUser onClick={toggleOpenUser}>Ivan Ivanov</S.HeaderUser>
             {isOpen && (
               <div
                 className="header__pop-user-set pop-user-set"
@@ -39,7 +40,13 @@ export const Header = ({ addCard }) => {
                 <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
                 <div className="pop-user-set__theme">
                   <p>Темная тема</p>
-                  <input type="checkbox" className="checkbox" name="checkbox" />
+                  <input
+                    checked={changeTheme === "dark"}
+                    onClick={onChangeTheme}
+                    type="checkbox"
+                    className="checkbox"
+                    name="checkbox"
+                  />
                 </div>
                 <button type="button" className="_hover03">
                   <a href="#popExit">Выйти</a>
@@ -47,8 +54,8 @@ export const Header = ({ addCard }) => {
               </div>
             )}
           </nav>
-        </div>
-      </div>
-    </header>
+        </S.HeaderBlock>
+      </Container>
+    </S.Header>
   );
 };
