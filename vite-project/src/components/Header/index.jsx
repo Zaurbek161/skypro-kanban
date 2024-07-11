@@ -1,5 +1,4 @@
 import { useState } from "react";
-// eslint-disable-next-line react/prop-types
 export const Header = ({ addCard }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpenUser = () => {
