@@ -1,53 +1,56 @@
 import { useState } from "react";
-export const Header = ({ addCard }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleOpenUser = () => {
-    setIsOpen(!isOpen);
+import { PopUser } from "../PopUser";
+import { Container } from "../General/General.styled";
+import { Link } from "react-router-dom";
+import { useUserContext } from "../../context/UserContext";
+import * as S from "./header.styled";
+import { useThemeContext } from "../../context/ThemeContext";
+
+let i = 7;
+
+export const Header = () => {
+  
+  const { user, updateUser } = useUserContext();
+  const { theme, changeTheme } = useThemeContext();
+
+  const [isOpenUser, setIsOpenUser] = useState(false);
+  
+  const handleClickOpenUser = () => {
+    setIsOpenUser(!isOpenUser);
   };
+
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header__block">
+    <S.Header $theme={theme}>
+      <Container>
+        <S.Block>
           <div className="header__logo _show _light">
             <a href="" target="_self">
-              <img src="images/logo.png" alt="logo" />
+              <img src="public/logo.png" alt="logo" />
             </a>
           </div>
           <div className="header__logo _dark">
             <a href="" target="_self">
-              <img src="images/logo_dark.png" alt="logo" />
+              <img src="public/logo_dark.png" alt="logo" />
             </a>
           </div>
-          <nav className="header__nav">
-            <button
-              onClick={addCard}
+          <S.Nav>
+            <S.ButtonMain
               className="header__btn-main-new _hover01"
               id="btnMainNew"
             >
-              <a>Создать новую задачу</a>
-            </button>
-            <a className="header__user _hover02" onClick={toggleOpenUser}>
-              Ivan Ivanov
-            </a>
-            {isOpen && (
-              <div
-                className="header__pop-user-set pop-user-set"
-                id="user-set-target"
-              >
-                <p className="pop-user-set__name">Ivan Ivanov</p>
-                <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-                <div className="pop-user-set__theme">
-                  <p>Темная тема</p>
-                  <input type="checkbox" className="checkbox" name="checkbox" />
-                </div>
-                <button type="button" className="_hover03">
-                  <a href="#popExit">Выйти</a>
-                </button>
-              </div>
-            )}
-          </nav>
-        </div>
-      </div>
-    </header>
+              <Link to="/newTask">Создать новую задачу</Link>
+            </S.ButtonMain>
+            <S.User $theme={theme}
+              href="#"
+              className="header__user _hover02"
+              onClick={handleClickOpenUser}
+            >
+              {user.name}
+            </S.User>
+            {isOpenUser && <PopUser />}
+          </S.Nav>
+        </S.Block>
+      </Container>
+    </S.Header>
   );
 };
